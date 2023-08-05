@@ -2,7 +2,6 @@ apiVersion: crossplanepoc.jfrog.io/v1alpha1
 kind: JfrogCPEnv
 metadata:
   name: jfrogcrossplanepoc001
-  namespace: jfrogcrossplanepoc001
 spec:
   argocd:
     values: {}
