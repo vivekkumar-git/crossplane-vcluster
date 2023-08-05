@@ -64,7 +64,8 @@ spec:
         string:
           fmt: "--tls-san=%s-vcluster.%s.svc.cluster.local"
       toFieldPath: spec.forProvider.values.syncer.extraArgs[2]
-      
+
+
   - name: observe-delete-namespace
     base:
       apiVersion: kubernetes.crossplane.io/v1alpha1
@@ -83,6 +84,7 @@ spec:
     - type: FromCompositeFieldPath
       fromFieldPath: metadata.name
       toFieldPath: metadata.name
+
 
   - name: provider-config-helm-vcluster
     base:
@@ -107,3 +109,33 @@ spec:
     - type: ToCompositeFieldPath
       fromFieldPath: metadata.name
       toFieldPath: status.vcluster.helmProviderName
+  
+
+  - name: s3Bucket
+    base:
+      apiVersion: s3.aws.upbound.io/v1beta1
+      kind: Bucket
+      metadata:
+        name: crossplane-quickstart-bucket
+      spec:
+        forProvider:
+          name: default
+          region: "us-east-2"
+    patches:
+      - type: FromCompositeFieldPath
+        fromFieldPath: metadata.name
+        toFieldPath: spec.forProvider.name
+      - type: FromCompositeFieldPath
+        fromFieldPath: metadata.name
+        toFieldPath: metadata.name
+        transforms:
+        - type: string
+          string:
+            fmt: "%s-s3bucket"
+      - fromFieldPath: spec.region
+        toFieldPath: spec.forProvider.region
+        transforms:
+          - type: map
+            map: 
+              EU: "eu-north-1"
+              US: "us-east-2"
