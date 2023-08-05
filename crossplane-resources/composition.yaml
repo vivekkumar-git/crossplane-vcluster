@@ -1,7 +1,7 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
-  name: vcluster
+  name: crossplane-environment
   labels:
     crossplane.io/xrd: jfrogvirtualenv.crossplane.jfrog.io
 spec:
