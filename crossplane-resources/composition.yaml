@@ -116,13 +116,13 @@ spec:
       apiVersion: s3.aws.upbound.io/v1beta1
       kind: Bucket
       metadata:
-        name: aws-provider-config
+        name: crossplane-bucket
       spec:
         forProvider:
           name: default
           region: "us-east-2"
         providerConfigRef:
-          name: crossplane-argo-pc
+          name: aws-provider-config
     patches:
       - type: FromCompositeFieldPath
         fromFieldPath: metadata.name
