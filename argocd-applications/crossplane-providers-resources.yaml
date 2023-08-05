@@ -12,13 +12,13 @@ spec:
         recurse: true
         include: '*.yaml'
       repoURL: https://github.com/vivekkumar-git/crossplane-vcluster.git
-      targetRevision: developmentv2
+      targetRevision: developmentv3
       path: crossplane-providers
     - directory:
         recurse: true
         include: '*.yaml'
       repoURL: https://github.com/vivekkumar-git/crossplane-vcluster.git
-      targetRevision: developmentv2
+      targetRevision: developmentv3
       path: crossplane-resources
   syncPolicy:
     automated:
