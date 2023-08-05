@@ -6,5 +6,3 @@ metadata:
     argocd.argoproj.io/sync-wave: "1"
 spec:
   package: xpkg.upbound.io/upbound/provider-aws:v0.27.0
-  controllerConfigRef:
-    name: kubernetes-controller-config
