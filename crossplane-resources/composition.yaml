@@ -113,3 +113,63 @@ spec:
             map: 
               EU: "eu-north-1"
               US: "us-east-2"
+
+
+  - name: provider-config-helm-vcluster
+    base:
+      apiVersion: helm.crossplane.io/v1beta1
+      kind: ProviderConfig
+      metadata:
+        name: foo
+      spec:
+        credentials:
+          secretRef:
+            key: config
+            name: vcluster-kubeconfig
+            namespace: foo
+          source: Secret
+    patches:
+    - type: FromCompositeFieldPath
+      fromFieldPath: metadata.name
+      toFieldPath: metadata.name
+    - type: FromCompositeFieldPath
+      fromFieldPath: metadata.name
+      toFieldPath: spec.credentials.secretRef.namespace
+    - type: ToCompositeFieldPath
+      fromFieldPath: metadata.name
+      toFieldPath: status.vcluster.helmProviderName
+
+
+  - name: argocd-on-vcluster
+    base:
+      apiVersion: helm.crossplane.io/v1beta1
+      kind: Release
+      metadata:
+        name: vcluster-test-argocd
+      spec:
+        providerConfigRef:
+          name: vcluster-test-helm-provider
+        forProvider:
+          chart:
+            name: argo-cd
+            repository: https://argoproj.github.io/argo-helm
+            version: 5.21.0
+          namespace: argocd
+    patches:
+    - type: FromCompositeFieldPath
+      fromFieldPath: metadata.name
+      toFieldPath: metadata.name
+      transforms:
+      - type: string
+        string:
+          fmt: "%s-argocd"
+    - type: FromCompositeFieldPath
+      fromFieldPath: status.vcluster.helmProviderName
+      toFieldPath: spec.providerConfigRef.name
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.argocd.values
+      toFieldPath: spec.forProvider.values
+      policy:
+        mergeOptions:
+          appendSlice: true
+          keepMapValues: true
