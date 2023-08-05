@@ -119,14 +119,10 @@ spec:
         name: crossplane-bucket
       spec:
         forProvider:
-          name: default
           region: "us-east-2"
         providerConfigRef:
-          name: aws-provider-config
+          name: default
     patches:
-      - type: FromCompositeFieldPath
-        fromFieldPath: metadata.name
-        toFieldPath: spec.forProvider.name
       - type: FromCompositeFieldPath
         fromFieldPath: metadata.name
         toFieldPath: metadata.name
