@@ -34,6 +34,16 @@ spec:
                     x-kubernetes-preserve-unknown-fields: true
                     description: Values for vcluster Helm chart
                     type: object
+              s3bucket:
+                type: object
+                properties:
+                  region:
+                    type: string
+                    oneOf:
+                      - pattern: '^EU$'
+                      - pattern: '^US$'
+                required:
+                  - region
             # required:
             # - vcluster-values
           status:

@@ -111,29 +111,29 @@ spec:
       toFieldPath: status.vcluster.helmProviderName
   
 
-  # - name: s3Bucket
-  #   base:
-  #     apiVersion: s3.aws.upbound.io/v1beta1
-  #     kind: Bucket
-  #     metadata:
-  #       name: aws-provider-config
-  #     spec:
-  #       forProvider:
-  #         region: "us-east-2"
-  #       providerConfigRef:
-  #         name: crossplane-argo-pc
-  #   patches:
-  #     - type: FromCompositeFieldPath
-  #       fromFieldPath: metadata.name
-  #       toFieldPath: metadata.name
-  #       transforms:
-  #       - type: string
-  #         string:
-  #           fmt: "%s-s3bucket"
-  #     - fromFieldPath: spec.region
-  #       toFieldPath: spec.forProvider.region
-  #       transforms:
-  #         - type: map
-  #           map: 
-  #             EU: "eu-north-1"
-  #             US: "us-east-2"
+  - name: s3Bucket
+    base:
+      apiVersion: s3.aws.upbound.io/v1beta1
+      kind: Bucket
+      metadata:
+        name: aws-provider-config
+      spec:
+        forProvider:
+          region: "us-east-2"
+        providerConfigRef:
+          name: crossplane-aws-providerconfig
+    patches:
+      - type: FromCompositeFieldPath
+        fromFieldPath: metadata.name
+        toFieldPath: metadata.name
+        transforms:
+        - type: string
+          string:
+            fmt: "%s-s3bucket"
+      - fromFieldPath: spec.region
+        toFieldPath: spec.forProvider.region
+        transforms:
+          - type: map
+            map: 
+              EU: "eu-north-1"
+              US: "us-east-2"
