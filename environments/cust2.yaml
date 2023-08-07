@@ -1,0 +1,9 @@
+apiVersion: demo.codefresh.io/v1alpha1
+kind: VirtualArgoCD
+metadata:
+  name: customer2
+spec:
+  argocd:
+    values: {}
+  s3bucket:
+    region: "US"
