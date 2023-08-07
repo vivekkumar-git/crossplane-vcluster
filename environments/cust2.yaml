@@ -1,4 +1,4 @@
-apiVersion: demo.codefresh.io/v1alpha1
+apiVersion: demo.jfrog.io/v1alpha1
 kind: VirtualArgoCD
 metadata:
   name: customer2
