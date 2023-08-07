@@ -8,7 +8,7 @@ metadata:
 spec:
   compositeTypeRef:
     apiVersion: crossplanepoc.jfrog.io/v1alpha1
-    kind: XVirtualArgoCD
+    kind: JfrogCPEnv
   resources:
   - name: vcluster
     base:
