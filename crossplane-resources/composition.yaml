@@ -109,6 +109,41 @@ spec:
     - type: ToCompositeFieldPath
       fromFieldPath: metadata.name
       toFieldPath: status.vcluster.helmProviderName
+
+
+  - name: argocd-on-vcluster
+    base:
+      apiVersion: helm.crossplane.io/v1beta1
+      kind: Release
+      metadata:
+        name: vcluster-test-argocd
+      spec:
+        providerConfigRef:
+          name: vcluster-test-helm-provider
+        forProvider:
+          chart:
+            name: argo-cd
+            repository: https://argoproj.github.io/argo-helm
+            version: 5.21.0
+          namespace: argocd
+    patches:
+    - type: FromCompositeFieldPath
+      fromFieldPath: metadata.name
+      toFieldPath: metadata.name
+      transforms:
+      - type: string
+        string:
+          fmt: "%s-argocd"
+    - type: FromCompositeFieldPath
+      fromFieldPath: status.vcluster.helmProviderName
+      toFieldPath: spec.providerConfigRef.name
+    - type: FromCompositeFieldPath
+      fromFieldPath: spec.argocd.values
+      toFieldPath: spec.forProvider.values
+      policy:
+        mergeOptions:
+          appendSlice: true
+          keepMapValues: true
   
 
   # - name: s3Bucket
