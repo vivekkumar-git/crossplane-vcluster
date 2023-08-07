@@ -34,7 +34,7 @@ spec:
               poddisruptionbudgets:
                 enabled: true
         providerConfigRef:
-          name: crossplane-argo-pc
+          name: crossplane-helm-providerconfig
     patches:
     - type: FromCompositeFieldPath
       fromFieldPath: metadata.name
