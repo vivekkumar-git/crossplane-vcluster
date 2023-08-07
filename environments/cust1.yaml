@@ -5,3 +5,5 @@ metadata:
 spec:
   argocd:
     values: {}
+  s3bucket:
+    region: "US"
