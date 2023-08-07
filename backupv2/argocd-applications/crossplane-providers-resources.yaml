@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: crossplane-resources
+spec:
+  destination:
+    namespace: crossplane-system
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+    - directory:
+        recurse: true
+        include: '*.yaml'
+      repoURL: https://github.com/vivekkumar-git/crossplane-vcluster.git
+      targetRevision: developmentv3
+      path: crossplane-providers
+    - directory:
+        recurse: true
+        include: '*.yaml'
+      repoURL: https://github.com/vivekkumar-git/crossplane-vcluster.git
+      targetRevision: developmentv3
+      path: crossplane-resources
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
