@@ -8,8 +8,8 @@ spec:
     kind: JfrogCPEnv
     plural: jfrogcpenvs
   claimNames:
-    kind: VirtualArgoCD
-    plural: virtualargocds
+    kind: JfrogCrossplaneEnv
+    plural: jfrogcrossplaneenvs
   versions:
   - name: v1alpha1
     served: true

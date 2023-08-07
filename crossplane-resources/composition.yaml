@@ -1,7 +1,7 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
-  name: virtualargocd
+  name: jfrog-crossplane-environment
   labels:
     crossplane.io/xrd: jfrogcpenvs.crossplanepoc.jfrog.io
     provider: helm
