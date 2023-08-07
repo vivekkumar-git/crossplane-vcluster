@@ -1,7 +1,7 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
-  name: jfrog-crossplane-environment
+  name: virtualargocd
   labels:
     crossplane.io/xrd: jfrogcpenvs.crossplanepoc.jfrog.io
     provider: helm
@@ -14,7 +14,7 @@ spec:
     base:
       apiVersion: helm.crossplane.io/v1beta1
       kind: Release
-      name: vcluster-test-argocd
+      name: vcluster-env
       spec:
         forProvider:
           chart:
@@ -34,7 +34,7 @@ spec:
               poddisruptionbudgets:
                 enabled: true
         providerConfigRef:
-          name: crossplane-helm-providerconfig
+          name: crossplane-argo-pc
     patches:
     - type: FromCompositeFieldPath
       fromFieldPath: metadata.name
@@ -66,24 +66,24 @@ spec:
       toFieldPath: spec.forProvider.values.syncer.extraArgs[2]
 
 
-  # - name: observe-delete-namespace
-  #   base:
-  #     apiVersion: kubernetes.crossplane.io/v1alpha1
-  #     kind: Object
-  #     metadata:
-  #       name: foo
-  #     spec:
-  #       managementPolicy: ObserveDelete
-  #       forProvider:
-  #         manifest:
-  #           apiVersion: v1
-  #           kind: Namespace
-  #       providerConfigRef:
-  #         name: kubernetes-provider
-  #   patches:
-  #   - type: FromCompositeFieldPath
-  #     fromFieldPath: metadata.name
-  #     toFieldPath: metadata.name
+  - name: observe-delete-namespace
+    base:
+      apiVersion: kubernetes.crossplane.io/v1alpha1
+      kind: Object
+      metadata:
+        name: foo
+      spec:
+        managementPolicy: ObserveDelete
+        forProvider:
+          manifest:
+            apiVersion: v1
+            kind: Namespace
+        providerConfigRef:
+          name: kubernetes-provider
+    patches:
+    - type: FromCompositeFieldPath
+      fromFieldPath: metadata.name
+      toFieldPath: metadata.name
 
 
   - name: provider-config-helm-vcluster
