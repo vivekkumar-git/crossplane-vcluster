@@ -1,5 +1,5 @@
 apiVersion: crossplanepoc.jfrog.io/v1alpha1
-kind: VirtualArgoCD
+kind: JfrogCrossplaneEnv
 metadata:
   name: customer1
 spec:
