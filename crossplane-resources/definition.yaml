@@ -5,8 +5,8 @@ metadata:
 spec:
   group: crossplanepoc.jfrog.io
   names:
-    kind: XVirtualArgoCD
-    plural: xvirtualargocds
+    kind: JfrogCPEnv
+    plural: jfrogcpenvs
   claimNames:
     kind: VirtualArgoCD
     plural: virtualargocds
