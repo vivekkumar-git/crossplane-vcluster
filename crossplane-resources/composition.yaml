@@ -3,18 +3,18 @@ kind: Composition
 metadata:
   name: virtualargocd
   labels:
-    crossplane.io/xrd: jfrogcpenvs.crossplanepoc.jfrog.io
+    crossplane.io/xrd:  xvirtualargocds.demo.codefresh.io
     provider: helm
 spec:
   compositeTypeRef:
-    apiVersion: crossplanepoc.jfrog.io/v1alpha1
-    kind: JfrogCPEnv
+    apiVersion: demo.codefresh.io/v1alpha1
+    kind: XVirtualArgoCD
   resources:
   - name: vcluster
     base:
       apiVersion: helm.crossplane.io/v1beta1
       kind: Release
-      name: vcluster-env
+      name: vcluster-test-argocd
       spec:
         forProvider:
           chart:
