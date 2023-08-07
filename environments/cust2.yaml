@@ -1,5 +1,5 @@
-apiVersion: demo.codefresh.io/v1alpha1
-kind: VirtualArgoCD
+apiVersion: crossplanepoc.jfrog.io/v1alpha1
+kind: JfrogCPEnv
 metadata:
   name: customer2
 spec:

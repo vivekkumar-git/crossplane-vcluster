@@ -1,15 +1,15 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: CompositeResourceDefinition
 metadata:
-  name: xvirtualargocds.demo.codefresh.io
+  name: envs.crossplanepoc.jfrog.io
 spec:
-  group: demo.codefresh.io
+  group: crossplanepoc.jfrog.io
   names:
-    kind: XVirtualArgoCD
-    plural: xvirtualargocds
+    kind: JfrogCrossplaneEnv
+    plural: jfrogcrossplaneenvs
   claimNames:
-    kind: VirtualArgoCD
-    plural: virtualargocds
+    kind: JfrogCPEnv
+    plural: jfrogcpenvs
   versions:
   - name: v1alpha1
     served: true

@@ -1,20 +1,20 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
-  name: virtualargocd
+  name: crossplane-environment
   labels:
-    crossplane.io/xrd:  xvirtualargocds.demo.codefresh.io
+    crossplane.io/xrd: envs.crossplanepoc.jfrog.io
     provider: helm
 spec:
   compositeTypeRef:
-    apiVersion: demo.codefresh.io/v1alpha1
-    kind: XVirtualArgoCD
+    apiVersion: crossplanepoc.jfrog.io/v1alpha1
+    kind: JfrogCrossplaneEnv
   resources:
   - name: vcluster
     base:
       apiVersion: helm.crossplane.io/v1beta1
       kind: Release
-      name: vcluster-test-argocd
+      name: vcluster
       spec:
         forProvider:
           chart:
@@ -34,7 +34,7 @@ spec:
               poddisruptionbudgets:
                 enabled: true
         providerConfigRef:
-          name: crossplane-argo-pc
+          name: crossplane-helm-providerconfig
     patches:
     - type: FromCompositeFieldPath
       fromFieldPath: metadata.name
