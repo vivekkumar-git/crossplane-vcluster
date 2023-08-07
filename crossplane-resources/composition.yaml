@@ -3,7 +3,7 @@ kind: Composition
 metadata:
   name: virtualargocd
   labels:
-    crossplane.io/xrd:  xvirtualargocds.crossplanepoc.jfrog.io
+    crossplane.io/xrd: jfrogcpenvs.crossplanepoc.jfrog.io
     provider: helm
 spec:
   compositeTypeRef:

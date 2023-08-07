@@ -1,7 +1,7 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: CompositeResourceDefinition
 metadata:
-  name: xvirtualargocds.crossplanepoc.jfrog.io
+  name: jfrogcpenvs.crossplanepoc.jfrog.io
 spec:
   group: crossplanepoc.jfrog.io
   names:
