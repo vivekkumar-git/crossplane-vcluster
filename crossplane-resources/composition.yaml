@@ -1,14 +1,14 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
-  name: virtualargocd
+  name: jfrog-crossplane-environment
   labels:
-    crossplane.io/xrd:  xvirtualargocds.crossplanepoc.jfrog.io
+    crossplane.io/xrd:  jfrogcpenvs.crossplanepoc.jfrog.io
     provider: helm
 spec:
   compositeTypeRef:
     apiVersion: crossplanepoc.jfrog.io/v1alpha1
-    kind: XVirtualArgoCD
+    kind: JfrogCPEnv
   resources:
   - name: vcluster
     base:
