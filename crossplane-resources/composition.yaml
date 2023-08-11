@@ -86,29 +86,29 @@ spec:
   #     toFieldPath: metadata.name
 
 
-  # - name: provider-config-helm-vcluster
-  #   base:
-  #     apiVersion: helm.crossplane.io/v1beta1
-  #     kind: ProviderConfig
-  #     metadata:
-  #       name: foo
-  #     spec:
-  #       credentials:
-  #         secretRef:
-  #           key: config
-  #           name: vcluster-kubeconfig
-  #           namespace: foo
-  #         source: Secret
-  #   patches:
-  #   - type: FromCompositeFieldPath
-  #     fromFieldPath: metadata.name
-  #     toFieldPath: metadata.name
-  #   - type: FromCompositeFieldPath
-  #     fromFieldPath: metadata.name
-  #     toFieldPath: spec.credentials.secretRef.namespace
-  #   - type: ToCompositeFieldPath
-  #     fromFieldPath: metadata.name
-  #     toFieldPath: status.vcluster.helmProviderName
+  - name: provider-config-helm-vcluster
+    base:
+      apiVersion: helm.crossplane.io/v1beta1
+      kind: ProviderConfig
+      metadata:
+        name: foo
+      spec:
+        credentials:
+          secretRef:
+            key: config
+            name: vcluster-kubeconfig
+            namespace: foo
+          source: Secret
+    patches:
+    - type: FromCompositeFieldPath
+      fromFieldPath: metadata.name
+      toFieldPath: metadata.name
+    - type: FromCompositeFieldPath
+      fromFieldPath: metadata.name
+      toFieldPath: spec.credentials.secretRef.namespace
+    - type: ToCompositeFieldPath
+      fromFieldPath: metadata.name
+      toFieldPath: status.vcluster.helmProviderName
 
 
   # - name: argocd-on-vcluster
