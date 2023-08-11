@@ -109,6 +109,12 @@ spec:
     - type: ToCompositeFieldPath
       fromFieldPath: metadata.name
       toFieldPath: status.vcluster.helmProviderName
+    - type: ToCompositeFieldPath
+      fromFieldPath: metadata.name
+      toFieldPath: status.vcluster.helmProviderNewName
+    - type: FromCompositeFieldPath
+      fromFieldPath: metadata.name
+      toFieldPath: status.vcluster.helmProviderNewName
 
 
   # - name: argocd-on-vcluster
