@@ -106,9 +106,9 @@ spec:
     - type: FromCompositeFieldPath
       fromFieldPath: metadata.name
       toFieldPath: spec.credentials.secretRef.namespace
-    - type: ToCompositeFieldPath
-      fromFieldPath: metadata.name
-      toFieldPath: status.vcluster.helmProviderName
+    # - type: ToCompositeFieldPath
+    #   fromFieldPath: metadata.name
+    #   toFieldPath: status.vcluster.helmProviderName
     - type: ToCompositeFieldPath
       fromFieldPath: metadata.name
       toFieldPath: status.vcluster.helmProviderNewName
