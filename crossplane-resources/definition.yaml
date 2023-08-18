@@ -61,3 +61,12 @@ spec:
                   helmProviderName:
                     description: Name of the Helm provider created for vcluster
                     type: string
+                  helmProviderNewName:
+                    description: Name of the Helm provider created for vcluster
+                    type: string
+              somefield:
+                type: object
+                properties:
+                  helmProviderName:  
+                    description: Name of the secret that holds the Kubeconfig for the virtual cluster.
+                    type: string
