@@ -3,7 +3,7 @@ kind: Composition
 metadata:
   name: jfrog-vcluster
   labels:
-    crossplane.io/xrd:  xvcluster.crossplane.jfrog.io
+    crossplane.io/xrd: xvclusters.crossplane.jfrog.io
     provider: helm
 spec:
   compositeTypeRef:
