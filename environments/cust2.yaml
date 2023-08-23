@@ -1,9 +1,0 @@
-apiVersion: crossplanepoc.jfrog.io/v1alpha1
-kind: JfrogCrossplaneEnv
-metadata:
-  name: customer2
-spec:
-  argocd:
-    values: {}
-  s3bucket:
-    region: "US"

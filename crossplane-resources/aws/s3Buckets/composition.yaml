@@ -1,0 +1,38 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: jfrog-s3bucket
+  labels:
+    crossplane.io/xrd: xs3bucket.crossplane.jfrog.io
+    provider: helm
+spec:
+  compositeTypeRef:
+    apiVersion: crossplane.jfrog.io/v1alpha1
+    kind: XS3Bucket
+  resources:
+  - name: s3Bucket
+    base:
+      apiVersion: s3.aws.upbound.io/v1beta1
+      kind: Bucket
+      metadata:
+        name: aws-provider-config
+      spec:
+        forProvider:
+          region: "us-east-2"
+        providerConfigRef:
+          name: crossplane-aws-providerconfig
+    patches:
+      - type: FromCompositeFieldPath
+        fromFieldPath: metadata.name
+        toFieldPath: metadata.name
+        transforms:
+        - type: string
+          string:
+            fmt: "%s-s3bucket"
+      - fromFieldPath: spec.region
+        toFieldPath: spec.forProvider.region
+        transforms:
+          - type: map
+            map: 
+              EU: "eu-north-1"
+              US: "us-east-2"
