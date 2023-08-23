@@ -3,7 +3,7 @@ kind: Composition
 metadata:
   name: jfrog-s3bucket
   labels:
-    crossplane.io/xrd: xs3bucket.crossplane.jfrog.io
+    crossplane.io/xrd: xs3buckets.crossplane.jfrog.io
     provider: helm
 spec:
   compositeTypeRef:

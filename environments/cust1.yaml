@@ -6,12 +6,12 @@ spec:
   argocd:
     values: {}
 
-# ---
+---
 
-# apiVersion: crossplane.jfrog.io/v1alpha1
-# kind: S3Bucket
-# metadata:
-#   name: customer1
-# spec:
-#   s3bucket:
-#     region: "US"
+apiVersion: crossplane.jfrog.io/v1alpha1
+kind: S3Bucket
+metadata:
+  name: customer1
+spec:
+  s3bucket:
+    region: "US"
