@@ -47,7 +47,7 @@ spec:
                     type: string
                   dbSubnetGroupName:
                     type: string
-                  securityGroupNames:
+                  vpcSecurityGroupIds:
                     type: array
                   availabilityZone:
                     type: string

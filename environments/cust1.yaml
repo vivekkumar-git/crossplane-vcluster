@@ -32,8 +32,8 @@ spec:
     dbName: crossplanerdsv1
     username: adminuser
     dbSubnetGroupName: k8s-dev-ap-south-1
-    securityGroupNames:
-      - k8s-dev-ap-south-1-postgresql
+    vpcSecurityGroupIds:
+      - sg-02fe99b0cf5bf1417
     availabilityZone: ap-south-1b
     backupRetentionPeriod: 7
     deletetionProtection: false
