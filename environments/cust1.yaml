@@ -1,12 +1,12 @@
-apiVersion: crossplane.jfrog.io/v1alpha1
-kind: VirtualCluster
-metadata:
-  name: customer1
-spec:
-  argocd:
-    values: {}
+# apiVersion: crossplane.jfrog.io/v1alpha1
+# kind: VirtualCluster
+# metadata:
+#   name: customer1
+# spec:
+#   argocd:
+#     values: {}
 
----
+# ---
 
 apiVersion: crossplane.jfrog.io/v1alpha1
 kind: S3Bucket
@@ -15,3 +15,31 @@ metadata:
 spec:
   s3bucket:
     region: "US"
+
+---
+
+apiVersion: crossplane.jfrog.io/v1alpha1
+kind: RDS
+metadata:
+  # namespace: example-redshift
+  name: customer1
+spec:
+  parameters:
+    region: ap-south-1
+    instanceClass: db.t3.small
+    engine: postgres
+    engineVersion: "13.9"
+    dbName: crossplanerdsv1
+    username: adminuser
+    dbSubnetGroupName: k8s-dev-ap-south-1
+    securityGroupNames:
+      - k8s-dev-ap-south-1-postgresql
+    availabilityZone: ap-south-1b
+    backupRetentionPeriod: 7
+    deletetionProtection: false
+    skipFinalSnapshot: true
+    backupWindow: "1:00-2:00"
+    maintenanceWindow: "Sun:2:00-Sun:3:00"
+    tags:
+      - key : application
+        value: rds-example

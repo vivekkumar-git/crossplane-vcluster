@@ -1,0 +1,87 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  labels:
+    crossplane.io/xrd: xrdss.crossplane.jfrog.io
+    provider: aws
+  name: rds
+spec:
+  compositeTypeRef:
+    apiVersion: crossplane.jfrog.io/v1alpha1
+    kind: XRds
+  resources:
+  - base:
+      apiVersion: rds.aws.crossplane.io/v1alpha1
+      kind: Instance
+      spec:
+        forProvider:
+          instanceClass: db.t3.medium
+          dbSubnetGroupName: k8s-dev-ap-south-1
+          autoGeneratePassword: true
+          passwordSecretRef:
+            key: password
+            name: rdspassword
+            namespace: crossplane-system
+          deletetionProtection: false
+          maintenanceWindow: "Sun:2:00-Sun:3:00"
+          backupWindow: "1:00-2:00"
+          skipFinalSnapshot: true
+          backupRetentionPeriod: 7
+          storageEncrypted: true
+        providerConfigRef:
+          name: aws-provider
+    name: rdsDBInstance
+    patches:
+      - fromFieldPath: metadata.labels['crossplane.io/claim-name']
+        toFieldPath: metadata.annotations[crossplane.io/external-name]
+      - fromFieldPath: spec.parameters.region
+        toFieldPath: spec.forProvider.region
+      - fromFieldPath: spec.parameters.instanceClass
+        toFieldPath: spec.forProvider.instanceClass
+      - fromFieldPath: spec.parameters.dbName
+        toFieldPath: spec.forProvider.dbName
+      - fromFieldPath: spec.parameters.engine
+        toFieldPath: spec.forProvider.engine
+      - fromFieldPath: spec.parameters.engineVersion
+        toFieldPath: spec.forProvider.engineVersion
+      - fromFieldPath: spec.parameters.username
+        toFieldPath: spec.forProvider.username
+      - fromFieldPath: spec.parameters.dbSubnetGroupName
+        toFieldPath: spec.forProvider.dbSubnetGroupName
+      - fromFieldPath: spec.parameters.securityGroupNames
+        toFieldPath: spec.forProvider.securityGroupNames
+      - fromFieldPath: spec.parameters.availabilityZone
+        toFieldPath: spec.forProvider.availabilityZone
+      - fromFieldPath: spec.parameters.deletetionProtection
+        toFieldPath: spec.forProvider.deletetionProtection
+      - fromFieldPath: spec.parameters.maintenanceWindow
+        toFieldPath: spec.forProvider.maintenanceWindow
+      - fromFieldPath: spec.parameters.backupWindow
+        toFieldPath: spec.forProvider.backupWindow
+      - fromFieldPath: spec.parameters.skipFinalSnapshot
+        toFieldPath: spec.forProvider.skipFinalSnapshot
+      - fromFieldPath: spec.parameters.backupRetentionPeriod
+        toFieldPath: spec.forProvider.backupRetentionPeriod
+      - fromFieldPath: spec.parameters.tags
+        toFieldPath: spec.forProvider.tags
+  # - base:
+  #     apiVersion: secretsmanager.aws.crossplane.io/v1beta1
+  #     kind: Secret
+  #     spec:
+  #       forProvider:
+  #         region: ap-south-1
+  #         description: "Rds master password"
+  #         forceDeleteWithoutRecovery: false
+  #         recoveryWindowInDays: 7
+  #         stringSecretRef:
+  #           key: password
+  #       providerConfigRef:
+  #         name: aws-provider
+  #   name: rdsMasterPassword
+  #   patches:
+  #     - fromFieldPath: spec.parameters.tags
+  #       toFieldPath: spec.forProvider.tags
+  #     - fromFieldPath: metadata.labels['crossplane.io/claim-name']
+  #       toFieldPath: spec.forProvider.stringSecretRef.namespace
+  #     - fromFieldPath: metadata.labels['crossplane.io/claim-name']
+  #       toFieldPath: spec.forProvider.stringSecretRef.name
