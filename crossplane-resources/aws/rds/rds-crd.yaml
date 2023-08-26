@@ -22,6 +22,7 @@ spec:
             type: object
             properties:
               parameters:
+                type: object
                 properties:
                   tags:
                     type: array
