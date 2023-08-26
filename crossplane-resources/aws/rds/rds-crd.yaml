@@ -46,8 +46,8 @@ spec:
                     type: string
                   dbSubnetGroupName:
                     type: string
-                  securityGroupNames:
-                    type: array
+                  # securityGroupNames:
+                  #   type: array
                   availabilityZone:
                     type: string
                   backupRetentionPeriod:
