@@ -48,8 +48,8 @@ spec:
         toFieldPath: spec.forProvider.username
       - fromFieldPath: spec.parameters.dbSubnetGroupName
         toFieldPath: spec.forProvider.dbSubnetGroupName
-      - fromFieldPath: spec.parameters.vpcSecurityGroupIds
-        toFieldPath: spec.forProvider.vpcSecurityGroupIds
+      # - fromFieldPath: spec.parameters.vpcSecurityGroupIds
+      #   toFieldPath: spec.forProvider.vpcSecurityGroupIds
       - fromFieldPath: spec.parameters.availabilityZone
         toFieldPath: spec.forProvider.availabilityZone
       - fromFieldPath: spec.parameters.deletetionProtection
