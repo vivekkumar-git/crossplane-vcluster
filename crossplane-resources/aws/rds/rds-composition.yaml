@@ -10,7 +10,8 @@ spec:
     apiVersion: crossplane.jfrog.io/v1alpha1
     kind: XRds
   resources:
-  - base:
+  - name: rdsDBInstance
+    base:
       apiVersion: rds.aws.crossplane.io/v1alpha1
       kind: Instance
       spec:
@@ -29,8 +30,7 @@ spec:
           backupRetentionPeriod: 7
           storageEncrypted: true
         providerConfigRef:
-          name: aws-provider
-    name: rdsDBInstance
+          name: crossplane-aws-providerconfig
     patches:
       - fromFieldPath: metadata.labels['crossplane.io/claim-name']
         toFieldPath: metadata.annotations[crossplane.io/external-name]
@@ -76,7 +76,7 @@ spec:
   #         stringSecretRef:
   #           key: password
   #       providerConfigRef:
-  #         name: aws-provider
+  #         name: crossplane-aws-providerconfig
   #   name: rdsMasterPassword
   #   patches:
   #     - fromFieldPath: spec.parameters.tags

@@ -61,7 +61,7 @@ spec:
                   maintenanceWindow:
                     type: string
                 required:
-                - tags
-                - engineVersion
-                - instanceClass
-                - dbName
+                  - tags
+                  - engineVersion
+                  - instanceClass
+                  - dbName
