@@ -26,8 +26,8 @@ spec:
             name: rdspassword
             namespace: crossplane-system
           deletetionProtection: false
-          maintenanceWindow: Sun:2:00-Sun:3:00
-          backupWindow: 1:00-2:00
+          maintenanceWindow: Sun:02:00-Sun:03:00
+          backupWindow: 01:00-02:00
           skipFinalSnapshot: true
           backupRetentionPeriod: 7
           storageEncrypted: true
