@@ -17,6 +17,7 @@ spec:
       spec:
         forProvider:
           instanceClass: db.t3.medium
+          allocatedStorage: 20
           dbSubnetGroupName: k8s-dev-ap-south-1
           # securityGroupNames:
           #   - k8s-dev-ap-south-1-postgresql
