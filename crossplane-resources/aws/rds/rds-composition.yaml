@@ -35,8 +35,7 @@ spec:
           backupRetentionPeriod: 7
           storageEncrypted: true
           tags:
-            - key : application
-              value: rds-example
+            application: rds-example
         providerConfigRef:
           name: crossplane-aws-providerconfig
     patches:
