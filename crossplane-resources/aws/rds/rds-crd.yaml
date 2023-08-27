@@ -24,8 +24,8 @@ spec:
               parameters:
                 type: object
                 properties:
-                  # tags:
-                  #   type: object
+                  tags:
+                    type: object
                   region:
                     type: string
                   instanceClass:

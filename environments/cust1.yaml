@@ -41,6 +41,5 @@ spec:
     skipFinalSnapshot: true
     backupWindow: 01:00-02:00
     maintenanceWindow: Sun:02:00-Sun:03:00
-    # tags:
-    #   - key : application
-    #     value: rds-example
+    tags:
+      GROUP: devx
