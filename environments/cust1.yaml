@@ -17,6 +17,7 @@ spec:
 #     region: "US"
 
 # ---
+--- 
 
 apiVersion: crossplane.jfrog.io/v1alpha1
 kind: RDS
