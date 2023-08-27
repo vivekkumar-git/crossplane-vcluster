@@ -43,7 +43,8 @@ spec:
                   # securityGroupNames:
                   #   type: array
                   vpcSecurityGroupIds:
-                    type: array
+                    items: 
+                      type: array
                   availabilityZone:
                     type: string
                   backupRetentionPeriod:
