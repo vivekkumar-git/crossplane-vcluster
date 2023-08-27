@@ -16,7 +16,6 @@ spec:
 #   s3bucket:
 #     region: "US"
 
-# ---
 --- 
 
 apiVersion: crossplane.jfrog.io/v1alpha1
