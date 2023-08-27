@@ -40,6 +40,6 @@ spec:
     skipFinalSnapshot: true
     backupWindow: "1:00-2:00"
     maintenanceWindow: "Sun:2:00-Sun:3:00"
-    tags:
-      - key : application
-        value: rds-example
+    # tags:
+    #   - key : application
+    #     value: rds-example
