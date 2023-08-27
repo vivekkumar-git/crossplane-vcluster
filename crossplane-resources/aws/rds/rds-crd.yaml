@@ -47,8 +47,8 @@ spec:
                     type: string
                   dbSubnetGroupName:
                     type: string
-                  # vpcSecurityGroupIds:
-                  #   type: array
+                  vpcSecurityGroupIds:
+                    type: array
                   availabilityZone:
                     type: string
                   backupRetentionPeriod:
