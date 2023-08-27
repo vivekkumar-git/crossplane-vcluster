@@ -18,7 +18,8 @@ spec:
         forProvider:
           instanceClass: db.t3.medium
           dbSubnetGroupName: k8s-dev-ap-south-1
-          vpcSecurityGroupIds: ["sg-02fe99b0cf5bf1417"]
+          vpcSecurityGroupIds:
+            - k8s-dev-ap-south-1-postgresql
           autoGeneratePassword: true
           passwordSecretRef:
             key: password
