@@ -40,8 +40,6 @@ spec:
                     type: string
                   dbSubnetGroupName:
                     type: string
-                  # securityGroupNames:
-                  #   type: array
                   vpcSecurityGroupIds:
                     items: 
                       type: string

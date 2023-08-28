@@ -36,6 +36,9 @@ spec:
           storageEncrypted: true
           tags:
             application: rds-example
+        writeConnectionSecretToRef:
+          namespace: crossplane-system
+          name: newrds
         providerConfigRef:
           name: crossplane-aws-providerconfig
     patches:
