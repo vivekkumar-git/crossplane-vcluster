@@ -14,6 +14,9 @@ spec:
     base:
       apiVersion: rds.aws.upbound.io/v1beta1
       kind: Instance
+      metadata:
+        annotations: 
+          crossplane.io/external-name: "crossplane-rds-instance"
       spec:
         forProvider:
           instanceClass: db.t3.medium
@@ -58,8 +61,6 @@ spec:
         toFieldPath: spec.forProvider.username
       - fromFieldPath: spec.parameters.dbSubnetGroupName
         toFieldPath: spec.forProvider.dbSubnetGroupName
-      # - fromFieldPath: spec.parameters.securityGroupNames
-      #   toFieldPath: spec.forProvider.securityGroupNames
       - fromFieldPath: spec.parameters.vpcSecurityGroupIds
         toFieldPath: spec.forProvider.vpcSecurityGroupIds
       - fromFieldPath: spec.parameters.availabilityZone
@@ -76,6 +77,22 @@ spec:
         toFieldPath: spec.forProvider.backupRetentionPeriod
       - fromFieldPath: spec.parameters.tags
         toFieldPath: spec.forProvider.tags
+      # set the secret name to the claim name
+      - fromFieldPath: "metadata.labels[crossplane.io/claim-name]"
+        toFieldPath: "spec.writeConnectionSecretToRef.name"
+        transforms:
+          - type: string
+            string:
+              fmt: "%s-pginstance"
+      # change secret namespace to the one of the claim
+      - fromFieldPath: "metadata.labels[crossplane.io/claim-namespace]"
+        toFieldPath: "spec.writeConnectionSecretToRef.namespace"
+      # set label app = name of the original claim
+      - fromFieldPath: "metadata.labels[crossplane.io/claim-name]"
+        toFieldPath: "metadata.labels[crossplane.io/app]"
+      # set the name of the external resource to be the name of the claim
+      - fromFieldPath: "metadata.labels[crossplane.io/claim-name]"
+        toFieldPath: "metadata.annotations[crossplane.io/external-name]"
   # - base:
   #     apiVersion: secretsmanager.aws.crossplane.io/v1beta1
   #     kind: Secret
