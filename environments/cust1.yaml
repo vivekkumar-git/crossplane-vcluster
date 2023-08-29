@@ -21,7 +21,7 @@
 apiVersion: crossplane.jfrog.io/v1alpha1
 kind: RDS
 metadata:
-  # namespace: customer1
+  namespace: customer1
   name: customer1
 spec:
   parameters:
