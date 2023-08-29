@@ -45,7 +45,7 @@ spec:
         providerConfigRef:
           name: crossplane-aws-providerconfig
     patches:
-      - fromFieldPath: metadata.labels['crossplane.io/claim-name']
+      - fromFieldPath: metadata.labels[crossplane.io/claim-name]
         toFieldPath: metadata.annotations[crossplane.io/external-name]
       - fromFieldPath: spec.parameters.region
         toFieldPath: spec.forProvider.region
