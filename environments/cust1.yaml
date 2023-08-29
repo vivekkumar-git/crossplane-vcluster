@@ -1,10 +1,10 @@
-apiVersion: crossplane.jfrog.io/v1alpha1
-kind: VirtualCluster
-metadata:
-  name: customer1
-spec:
-  argocd:
-    values: {}
+# apiVersion: crossplane.jfrog.io/v1alpha1
+# kind: VirtualCluster
+# metadata:
+#   name: customer1
+# spec:
+#   argocd:
+#     values: {}
 
 # ---
 
@@ -16,7 +16,7 @@ spec:
 #   s3bucket:
 #     region: "US"
 
---- 
+# --- 
 
 apiVersion: crossplane.jfrog.io/v1alpha1
 kind: RDS
