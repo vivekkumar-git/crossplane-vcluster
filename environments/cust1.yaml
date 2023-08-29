@@ -40,5 +40,5 @@ spec:
     skipFinalSnapshot: true
     backupWindow: 01:00-02:00
     maintenanceWindow: Sun:02:00-Sun:03:00
-    # tags:
-    #   GROUP: devx
+    tags:
+      application: devx
