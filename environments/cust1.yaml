@@ -18,27 +18,27 @@
 
 # --- 
 
-apiVersion: crossplane.jfrog.io/v1alpha1
-kind: RDS
-metadata:
-  # namespace: customer1
-  name: customer2
-spec:
-  parameters:
-    region: ap-south-1
-    instanceClass: db.t3.small
-    engine: postgres
-    engineVersion: "13.9"
-    dbName: crossplanerdsv1
-    username: adminuser
-    dbSubnetGroupName: k8s-dev-ap-south-1
-    vpcSecurityGroupIds:
-      - sg-02fe99b0cf5bf1417
-    availabilityZone: ap-south-1b
-    backupRetentionPeriod: 7
-    deletetionProtection: false
-    skipFinalSnapshot: true
-    backupWindow: 01:00-02:00
-    maintenanceWindow: Sun:02:00-Sun:03:00
-    tags:
-      application: devx
+# apiVersion: crossplane.jfrog.io/v1alpha1
+# kind: RDS
+# metadata:
+#   # namespace: customer1
+#   name: customer2
+# spec:
+#   parameters:
+#     region: ap-south-1
+#     instanceClass: db.t3.small
+#     engine: postgres
+#     engineVersion: "13.9"
+#     dbName: crossplanerdsv1
+#     username: adminuser
+#     dbSubnetGroupName: k8s-dev-ap-south-1
+#     vpcSecurityGroupIds:
+#       - sg-02fe99b0cf5bf1417
+#     availabilityZone: ap-south-1b
+#     backupRetentionPeriod: 7
+#     deletetionProtection: false
+#     skipFinalSnapshot: true
+#     backupWindow: 01:00-02:00
+#     maintenanceWindow: Sun:02:00-Sun:03:00
+#     tags:
+#       application: devx
