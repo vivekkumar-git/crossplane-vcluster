@@ -75,8 +75,8 @@ spec:
         toFieldPath: spec.forProvider.skipFinalSnapshot
       - fromFieldPath: spec.parameters.backupRetentionPeriod
         toFieldPath: spec.forProvider.backupRetentionPeriod
-      # - fromFieldPath: spec.parameters.tags
-      #   toFieldPath: spec.forProvider.tags
+      - fromFieldPath: spec.parameters.tags
+        toFieldPath: spec.forProvider.tags
       # set the secret name to the claim name
       - fromFieldPath: metadata.labels[crossplane.io/claim-name]
         toFieldPath: spec.writeConnectionSecretToRef.name
